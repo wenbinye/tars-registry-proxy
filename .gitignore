@@ -1,0 +1,5 @@
+runtime
+vendor
+composer.lock
+*.gz
+config.conf

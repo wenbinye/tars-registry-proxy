@@ -1,0 +1,63 @@
+{
+    "name": "wenbinye/tars-registry-proxy",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ye Wenbin",
+            "email": "wenbinye@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.2",
+        "monolog/monolog": "^2.0",
+        "php-di/php-di": "^6.0",
+        "symfony/event-dispatcher": "^5.0",
+        "wenbinye/tars": "^0.1"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "wenbinye/tars-gen": "^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "wenbinye\\tars\\registry\\": "src"
+        }
+    },
+    "scripts": {
+        "package": "wenbinye\\tars\\server\\ServerApplication::package",
+        "gen": "./vendor/bin/tars-gen"
+    },
+    "extra": {
+        "tars": {
+            "generator": {
+                "servant": {
+                    "tars_path": "tars",
+                    "servants": {
+                        "QueryF": "tars.tarsregistry.QueryObj"
+                    }
+                }
+            },
+            "serverName": "RegistryProxyServer",
+            "manifest": [
+                "composer.json",
+                {
+                    "in": "src"
+                },
+                {
+                    "followLinks": true,
+                    "exclude": [
+                        "phpunit",
+                        "symfony/finder",
+                        "kuiper/vendor",
+                        "tars/vendor",
+                        "tars-gen"
+                    ],
+                    "in": "vendor"
+                }
+            ]
+        }
+    }
+}
