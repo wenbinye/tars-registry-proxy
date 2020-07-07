@@ -15,11 +15,12 @@
         "monolog/monolog": "^2.0",
         "php-di/php-di": "^6.0",
         "symfony/event-dispatcher": "^5.0",
+        "vlucas/phpdotenv": "^5.0",
         "wenbinye/tars": "^0.1"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
-        "wenbinye/tars-gen": "^0.1"
+        "kuiper/component-installer": "^0.1.0",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -28,9 +29,14 @@
     },
     "scripts": {
         "package": "wenbinye\\tars\\server\\ServerApplication::package",
-        "gen": "./vendor/bin/tars-gen"
+        "container-config": "kuiper\\component\\ComponentInstaller::generate",
+        "serve": "@php src/index.php --config config.conf"
     },
     "extra": {
+        "kuiper": {
+            "config-file": "src/container.php",
+            "whitelist": ["wenbinye/tars"]
+        },
         "tars": {
             "generator": {
                 "servant": {

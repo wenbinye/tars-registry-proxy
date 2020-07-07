@@ -3,3 +3,4 @@ vendor
 composer.lock
 *.gz
 config.conf
+.env

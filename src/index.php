@@ -2,6 +2,8 @@
 
 use wenbinye\tars\server\ServerApplication;
 
-require __DIR__ . '/../vendor/autoload.php';
+define('APP_PATH', dirname(__DIR__));
+
+require APP_PATH . '/vendor/autoload.php';
 
 ServerApplication::run();
